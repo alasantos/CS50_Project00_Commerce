@@ -1,0 +1,20 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>New item</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ ItemForm.as_p }}
+        <p>
+            <input type="submit" />
+        </p>
+        
+    </form>
+
+{% if message != None %}
+<div class="footer">
+    {{ message }}
+</div>   
+{% endif %}
+{% endblock %}
