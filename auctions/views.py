@@ -5,7 +5,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User
+
+from .models import User, Item
 
 class ItemForm( forms.Form ):
     briefDescription = forms.CharField( label="Brief Description ", required="true")
@@ -13,12 +14,19 @@ class ItemForm( forms.Form ):
     image = forms.ImageField()
 
 def createListing( request, itemNumber = None ):
-    backdata = {
-       'ItemForm' : ItemForm(),
-       'message': 'This is a message.'
-    }
-    return render(request, 'auctions/createListing.html', backdata)
-    
+    if request.method == 'GET':
+        backdata = {
+            'ItemForm' : ItemForm(),
+            'message': 'This is a message.'
+        }
+        return render(request, 'auctions/createListing.html', backdata)
+
+    print(request.method)
+
+    form = ItemForm(request.POST)
+    if form.is_valid:
+        pass
+    return render( request, 'auctions/index.html' )
 
 def index(request):
     return render(request, "auctions/index.html")

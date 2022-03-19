@@ -1,5 +1,6 @@
 from pickle import TRUE
 from tkinter import CASCADE
+from typing_extensions import Required
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from datetime import date
@@ -15,7 +16,7 @@ class Category( models.Model ):
 
     def __str__(self):
         return f"{self.categoryName} : {self.categoryDescription} ({self.categoryCreateDate})"
-
+        
 class Item( models.Model ):
     ShortDescription = models.CharField( name='ShortDescription', max_length=64)
     LongDescription = models.TextField( name='CompleteDescription')
