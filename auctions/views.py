@@ -1,31 +1,36 @@
 from django import forms
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
+from django.forms import ModelForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-
 from .models import User, Item
 
-class ItemForm( forms.Form ):
-    briefDescription = forms.CharField( label="Brief Description ", required="true")
-    completeDescription = forms.CharField( label="Complete description ", required="false", widget=forms.Textarea( attrs= { 'rows': 5, 'cols': 80 } ) )
-    image = forms.ImageField()
+#class ItemForm( forms.Form ):
+#    title = forms.CharField( label='Title', required=True)
+#    description = forms.CharField( label='Description')
+#    imageUrl = forms.URLField( label='Image URL')
+#    startingBid = forms.DecimalField( label = 'Starting Bid')
 
-def createListing( request, itemNumber = None ):
+class ItemForm( ModelForm):
+    class Meta:
+        model = Item
+        fields = ['Title', 'Description', 'ItemImage', 'Category','StartingBid']  
+
+def createListing( request ):
     if request.method == 'GET':
         backdata = {
             'ItemForm' : ItemForm(),
-            'message': 'This is a message.'
+            'message': None
         }
         return render(request, 'auctions/createListing.html', backdata)
 
-    print(request.method)
-
     form = ItemForm(request.POST)
-    if form.is_valid:
-        pass
+    if form.is_valid():
+        form.save()
+
     return render( request, 'auctions/index.html' )
 
 def index(request):

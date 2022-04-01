@@ -11,7 +11,11 @@
         </p>
         
     </form>
-
+    <div class="fieldWrapper">
+        {{ form.subject.errors }}
+        {{ form.subject.label_tag }}
+        {{ form.subject }}
+    </div>
 {% if message != None %}
 <div class="footer">
     {{ message }}
