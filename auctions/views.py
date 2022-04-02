@@ -23,7 +23,8 @@ def createListing( request ):
     if request.method == 'GET':
         backdata = {
             'ItemForm' : ItemForm(),
-            'message': None
+            'message': None,
+            'done': False
         }
         return render(request, 'auctions/createListing.html', backdata)
 
