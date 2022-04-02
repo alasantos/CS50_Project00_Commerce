@@ -9,7 +9,7 @@ class User(AbstractUser):
     pass
 
 class Category( models.Model ):
-    name = models.CharField(name='Name', max_length=64)
+    name = models.CharField(name='Name', max_length=64, primary_key=True)
     description = models.TextField(name='Description')
     CreateDate = models.DateField(name='Createdate',default=date.today)
    # User = models.ForeignKey( User, on_delete=CASCADE)
@@ -18,6 +18,7 @@ class Category( models.Model ):
         return f"{self.Name} : {self.Description} ({self.Createdate})"
         
 class Item( models.Model ):
+    id_item = models.AutoField( name='id_item', primary_key=True)
     title = models.CharField( name='Title', max_length=64)
     description = models.TextField( name='Description')
     ItemimageURL = models.CharField( name='ItemImage', max_length=128)
