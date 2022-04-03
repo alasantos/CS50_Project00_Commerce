@@ -17,7 +17,14 @@ from .models import User, Item
 class ItemForm( ModelForm):
     class Meta:
         model = Item
-        fields = ['Title', 'Description', 'ItemImage', 'Category','StartingBid']  
+        fields = ['Title', 'Description', 'ItemImage', 'Category','startingBid']  
+        labels = {
+            'Title': ('Item Title'),
+            'Description': ('Describe your item:'),
+            'ItemImage': ('Place an image URL of your Item'),
+            'startingBid': ('Starting BID (US$)')
+        }
+
 
 def createListing( request ):
     if request.method == 'GET':

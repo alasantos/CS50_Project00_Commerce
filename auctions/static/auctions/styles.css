@@ -9,6 +9,10 @@ form {
 
 }
 
+h2 {
+    text-align : center;
+  }
+
 .footer {
     position: fixed;
     left: 0;
