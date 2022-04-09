@@ -3,5 +3,10 @@
 {% block body %}
     <h2>Active Listings</h2>
 
-    TODO
+    
+    {% for item in item_list %}  
+    <section id="item">
+            Title {{item.Title}} - {{item.Description}} - <img src={{item.ItemImage}} class="itemImage">  
+    </section>     
+     {% endfor %}
 {% endblock %}
