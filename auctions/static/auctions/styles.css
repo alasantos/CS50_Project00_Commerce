@@ -43,3 +43,7 @@ input {
   textarea {
      width: 50%;
   }
+
+  img.itemImage {
+    max-width: 10%;  
+  }
