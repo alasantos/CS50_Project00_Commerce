@@ -19,6 +19,7 @@ class ItemForm( ModelForm):
         model = Item
         fields = ['Title', 'Description', 'ItemImage', 'Category','startingBid']  
         labels = {
+            
             'Title': ('Item Title'),
             'Description': ('Describe your item:'),
             'ItemImage': ('Place an image URL of your Item'),
@@ -42,10 +43,14 @@ def createListing( request ):
     return render( request, 'auctions/index.html' )
 
 def index(request):
-    return render(request, "auctions/index.html")
+    if request.user.is_authenticated:
+        print('authenticated')
 
+    item_list = Item.objects.all()
 
-
+    return render(request, "auctions/index.html", {
+        'item_list': item_list
+    })
 
 def login_view(request):
     if request.method == "POST":
