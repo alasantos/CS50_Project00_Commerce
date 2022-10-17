@@ -6,7 +6,6 @@ form {
     padding: 2rem;
     width:70%;
     align-content: center;
-
 }
 
 h2 {
@@ -21,7 +20,7 @@ h2 {
     background-color: red;
     color: white;
     text-align: center;
- }
+}
 
 label{
     display: inline-block;
@@ -34,22 +33,16 @@ label{
 
 input {
     display: inline-block;
-  }
-  
-  input[type=submit] {
-      font-weight: 500;
-  }
-  
-  textarea {
-     width: 50%;
-  }
+}
+
+input[type=submit] {
+    font-weight: 500;
+}
+
+textarea {
+    width: 50%;
+}
 
   img.itemImage {
-        max-width: 10%;  
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        margin-bottom: 25px;     
-  }
-
-  img.itemImage:hover {
-        border: 1px solid #777;
+    max-width: 10%;  
   }
